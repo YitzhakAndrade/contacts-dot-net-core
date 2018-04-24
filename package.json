@@ -1,0 +1,40 @@
+{
+  "name": "contacts-dot-net-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "browserify -t riotify scripts/main.js | uglifyjs > wwwroot/js/bundle.js",
+    "bundle-debug": "browserify -t riotify scripts/main.js -o wwwroot/js/bundle.js -d",
+    "bundle-watch": "watchify -t riotify scripts/main.js -o wwwroot/js/bundle.js -d -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YitzhakAndrade/contacts-dot-net-core.git"
+  },
+  "author": "Yitzhak Andrade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YitzhakAndrade/contacts-dot-net-core/issues"
+  },
+  "homepage": "https://github.com/YitzhakAndrade/contacts-dot-net-core#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-datepicker": "^1.8.0",
+    "fullcalendar": "^3.9.0",
+    "jquery": "^3.3.1",
+    "jquery-mask-plugin": "^1.14.15",
+    "popper.js": "^1.14.3",
+    "riot": "^3.9.4",
+    "riot-route": "^3.1.3",
+    "toastr": "^2.1.4"
+  },
+  "devDependencies": {
+    "browserify": "^16.2.0",
+    "riot-compiler": "^3.4.0",
+    "riotify": "^2.0.0",
+    "uglify-es": "^3.3.9",
+    "watchify": "^3.11.0"
+  }
+}

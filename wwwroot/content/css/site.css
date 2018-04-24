@@ -1,0 +1,46 @@
+/* navbar fixada no topo */
+body {
+    padding-top: 60px; 
+    color: #969696;
+    /*background-color: #f3f3f3;*/
+}
+/* End: navbar fixada no topo */
+/* ======================================================================= */
+/* Loading */
+
+.ajax-loading {
+    height: 100%;
+}
+
+.loading {
+    display: grid;
+    height: 100%;
+}
+
+.loading .loading-child {
+    margin: auto;
+}
+
+.loader {
+    border: 3px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 3px solid #3498db;
+    border-bottom: 3px solid #3498db;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* End: Loading */
+/* ======================================================================= */
