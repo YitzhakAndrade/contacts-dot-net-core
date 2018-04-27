@@ -1,19 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using MongoDB.Driver.Core;
 
 namespace Contacts.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class ContactsController : Controller
     {
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<object> Get()
         {
-            return new string[] { "value1", "value2" };
+            string connectionString = @"";
+            MongoClientSettings settings = MongoClientSettings.FromUrl(
+                new MongoUrl(connectionString)
+            );
+            settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+            var client = new MongoClient(settings);
+            var db = client.GetDatabase("contacts");
+            var collection = db.GetCollection<BsonDocument>("contacts");
+
+            //collection.Find(new BsonDocument());
+            var contacts = collection.Find(_ => true).ToList();
+
+            return contacts;
         }
 
         // GET api/values/5

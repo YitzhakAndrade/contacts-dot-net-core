@@ -13,6 +13,9 @@ $(function () {
 	var riot = require('riot')
 	//var tagAppVersion = require('../riot-tags/components/app-version/app-version.tag')
     //riot.mount('#divAppVersion', tagAppVersion)
+    //var tag_contacts_list = require('./riot-tags/components/contacts-list/contacts-list.tag')
+    //riot.mount('contacts-list')
+    //riot.mount('#montaqui', tag_contacts_list)
 })
 
 /*toastr.options = {

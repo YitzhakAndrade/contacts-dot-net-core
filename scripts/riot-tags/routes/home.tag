@@ -12,4 +12,13 @@
 			Page not found
 		</a>
 	</div>
+
+	
+	<contacts-list />
+
+	<contact />
+
+	<script>
+        require('./home.js').call(this, this.opts)
+    </script>
 </home>
