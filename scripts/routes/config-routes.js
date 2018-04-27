@@ -2,9 +2,9 @@ var rotas_riot = require('./riot-routes')
 
 var rotas = [
 	{
-		nome: 'schedule',
-		tag: require('../riot-tags/routes/schedule/schedule.tag'),
-		js: require('../riot-tags/routes/schedule/schedule.js')
+		nome: 'contacts',
+		tag: require('../riot-tags/routes/page-contacts/page-contacts.tag'),
+		js: require('../riot-tags/routes/page-contacts/page-contacts.js')
 	}
 ]
 

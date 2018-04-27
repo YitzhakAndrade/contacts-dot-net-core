@@ -5,7 +5,6 @@ require('bootstrap')
 //BootstrapDialog = require('bootstrap3-dialog')
 //moment = require('moment')
 //toastr = require('toastr')
-fullcalendar = require('fullcalendar')
 
 require('./routes/config-routes')
 

@@ -1,10 +1,11 @@
 <contacts-list>
-    <h3>Lista de Contatos</h3>
+    <h3>Contacts List</h3>
 
-
-    <p each={ contact in opts.data.items }>
-        { contact.name }
-    </p>
+    <div class="list-group">
+		<a each={ contact in opts.data.items } class="list-group-item" href="#contacts/{ contact._id }">
+			{ contact.name }
+		</a>
+	</div>
     
     <script>
         require('./contacts-list.js').call(this, this.opts)

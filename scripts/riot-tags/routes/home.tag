@@ -2,8 +2,8 @@
 	<h2>Home</h2>
 	<hr />
 	<div class="list-group">
-		<a href="#schedule" class="list-group-item">
-			Schedule
+		<a href="#contacts" class="list-group-item">
+			Contacts
 		</a>
 		<a href="../api" class="list-group-item">
 			API Docs
@@ -12,11 +12,6 @@
 			Page not found
 		</a>
 	</div>
-
-	
-	<contacts-list />
-
-	<contact />
 
 	<script>
         require('./home.js').call(this, this.opts)

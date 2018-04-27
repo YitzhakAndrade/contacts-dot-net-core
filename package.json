@@ -20,9 +20,8 @@
   },
   "homepage": "https://github.com/YitzhakAndrade/contacts-dot-net-core#readme",
   "dependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.1.0",
     "bootstrap-datepicker": "^1.8.0",
-    "fullcalendar": "^3.9.0",
     "jquery": "^3.3.1",
     "jquery-mask-plugin": "^1.14.15",
     "popper.js": "^1.14.3",

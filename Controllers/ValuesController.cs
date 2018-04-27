@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Authentication;
 using System.Threading.Tasks;
+using Contacts.Entities;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -24,7 +25,7 @@ namespace Contacts.Controllers
             settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
             var client = new MongoClient(settings);
             var db = client.GetDatabase("contacts");
-            var collection = db.GetCollection<BsonDocument>("contacts");
+            var collection = db.GetCollection<Contact>("contacts");
 
             //collection.Find(new BsonDocument());
             var contacts = collection.Find(_ => true).ToList();
