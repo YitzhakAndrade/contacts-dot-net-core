@@ -14,17 +14,24 @@ namespace Contacts.Controllers
     [Route("api/[controller]")]
     public class ContactsController : Controller
     {
-        // GET api/values
-        [HttpGet]
-        public IEnumerable<object> Get()
+        private string connectionString = @"mongodb://contacts-dot-net-core:cmuV6hrpBuy8IksvIkMOZUnzpNQPY4oZ77q9wbD8GocK94ztJZJjLok7pRxVLRBIBMXHAFm0oARQFbYdo785zA==@contacts-dot-net-core.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+
+        private IMongoDatabase GetDatabase()
         {
-            string connectionString = @"";
             MongoClientSettings settings = MongoClientSettings.FromUrl(
                 new MongoUrl(connectionString)
             );
             settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
             var client = new MongoClient(settings);
             var db = client.GetDatabase("contacts");
+            return db;
+        }
+
+        // GET api/contacts
+        [HttpGet]
+        public IEnumerable<Contact> Get()
+        {
+            var db = GetDatabase();
             var collection = db.GetCollection<Contact>("contacts");
 
             //collection.Find(new BsonDocument());
@@ -33,11 +40,17 @@ namespace Contacts.Controllers
             return contacts;
         }
 
-        // GET api/values/5
+        // GET api/contacts/
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Contact Get(string id)
         {
-            return "value";
+            var db = GetDatabase();
+            var collection = db.GetCollection<Contact>("contacts");
+
+            //collection.Find(new BsonDocument());
+            var contact = collection.Find(c => c.Id == ObjectId.Parse(id)).FirstOrDefault();
+
+            return contact;
         }
 
         // POST api/values

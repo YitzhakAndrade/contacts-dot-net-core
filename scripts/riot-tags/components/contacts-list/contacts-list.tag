@@ -1,8 +1,6 @@
 <contacts-list>
-    <h3>Contacts List</h3>
-
     <div class="list-group">
-		<a each={ contact in opts.data.items } class="list-group-item" href="#contacts/{ contact._id }">
+		<a each={ contact in opts.data.items } class="list-group-item" href="#contact-details/{ contact.mongoId }">
 			{ contact.name }
 		</a>
 	</div>

@@ -4,8 +4,6 @@
 
     <contacts-list />
 
-	<contact />
-
     <script>
         require('./page-contacts.js').call(this, this.opts)
     </script>

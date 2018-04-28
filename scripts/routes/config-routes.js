@@ -1,11 +1,16 @@
-var rotas_riot = require('./riot-routes')
+var riot_routes = require('./riot-routes')
 
-var rotas = [
+var routes = [
 	{
-		nome: 'contacts',
+		id: 'contacts',
 		tag: require('../riot-tags/routes/page-contacts/page-contacts.tag'),
 		js: require('../riot-tags/routes/page-contacts/page-contacts.js')
+	},
+	{
+		id: 'contact-details',
+		tag: require('../riot-tags/routes/page-contact-details/page-contact-details.tag'),
+		js: require('../riot-tags/routes/page-contact-details/page-contact-details.js')
 	}
 ]
 
-rotas_riot.criarRotas(rotas)
+riot_routes.createRoutes(routes)

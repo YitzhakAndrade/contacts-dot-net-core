@@ -8,6 +8,8 @@ require('bootstrap')
 
 require('./routes/config-routes')
 
+api_contacts = require('./api-contacts/api.js')
+
 $(function () {
 	var riot = require('riot')
 	//var tagAppVersion = require('../riot-tags/components/app-version/app-version.tag')
