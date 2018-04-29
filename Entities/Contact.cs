@@ -9,7 +9,7 @@ namespace Contacts.Entities
     {
         public ObjectId Id { get; set; }
 
-        [DataMember]
+        [DataMember, BsonIgnore]
         public string MongoId
         {
             get { return Id.ToString(); }

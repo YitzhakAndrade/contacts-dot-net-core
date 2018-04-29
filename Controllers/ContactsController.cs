@@ -40,23 +40,25 @@ namespace Contacts.Controllers
             return contacts;
         }
 
-        // GET api/contacts/
+        // GET api/contacts/5ae26000bf45d42870615f3e
         [HttpGet("{id}")]
         public Contact Get(string id)
         {
             var db = GetDatabase();
             var collection = db.GetCollection<Contact>("contacts");
 
-            //collection.Find(new BsonDocument());
             var contact = collection.Find(c => c.Id == ObjectId.Parse(id)).FirstOrDefault();
-
             return contact;
         }
 
-        // POST api/values
+        // POST api/contacts
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Contact contact)
         {
+            var db = GetDatabase();
+            var collection = db.GetCollection<Contact>("contacts");
+            var filter = Builders<Contact>.Filter.Eq(c => c.Id, contact.Id);
+            collection.FindOneAndReplace(filter, contact);
         }
 
         // PUT api/values/5
@@ -65,10 +67,14 @@ namespace Contacts.Controllers
         {
         }
 
-        // DELETE api/values/5
+        // DELETE api/contacts/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            var db = GetDatabase();
+            var collection = db.GetCollection<Contact>("contacts");
+            var filter = Builders<Contact>.Filter.Eq(c => c.Id, ObjectId.Parse(id));
+            collection.FindOneAndDelete(filter);
         }
     }
 }

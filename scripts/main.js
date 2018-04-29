@@ -4,7 +4,7 @@ require('bootstrap')
 //require('bootstrap-datepicker')
 //BootstrapDialog = require('bootstrap3-dialog')
 //moment = require('moment')
-//toastr = require('toastr')
+toastr = require('toastr')
 
 require('./routes/config-routes')
 
@@ -19,7 +19,7 @@ $(function () {
     //riot.mount('#montaqui', tag_contacts_list)
 })
 
-/*toastr.options = {
+toastr.options = {
     positionClass: "toast-top-right",
     showDuration: 300,
     hideDuration: 300,
@@ -28,4 +28,4 @@ $(function () {
     showMethod: "slideDown",
     hideMethod: "slideUp",
     closeMethod: "slideUp",
-}*/
+}
