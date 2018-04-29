@@ -14,7 +14,7 @@ namespace Contacts.Controllers
     [Route("api/[controller]")]
     public class ContactsController : Controller
     {
-        private string connectionString = @"mongodb://contacts-dot-net-core:cmuV6hrpBuy8IksvIkMOZUnzpNQPY4oZ77q9wbD8GocK94ztJZJjLok7pRxVLRBIBMXHAFm0oARQFbYdo785zA==@contacts-dot-net-core.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+        private string connectionString = @"";
 
         private IMongoDatabase GetDatabase()
         {
