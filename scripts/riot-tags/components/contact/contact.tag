@@ -6,7 +6,7 @@
                 <a type="button" class="btn btn-default" href="#contacts">
                     <span class="glyphicon glyphicon-arrow-left"></span> Back
                 </a>
-                <div class="btn-group">
+                <div id="btnNewItem" class="btn-group hidden">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-plus"></span> New <span class="caret"></span>
                     </button>
@@ -15,8 +15,11 @@
                         <li><a onclick={newEmail}>E-mail</a></li>
                     </ul>
                 </div>
+                <button type="button" class="btn btn-default" onclick={editContact} if={!$.isEmptyObject(this.opts.data.contact)}>
+                    <span class="glyphicon glyphicon-pencil"></span> Edit contact
+                </button>
                 <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-danger" onclick={deleteContact}>
+                    <button type="button" class="btn btn-danger" onclick={deleteContact} if={!$.isEmptyObject(this.opts.data.contact)}>
                         <span class="glyphicon glyphicon-trash"></span> Delete contact
                     </button>
                 </div>
@@ -32,7 +35,7 @@
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-user"></span>
                     </span>
-                    <input class="form-control input-lg" placeholder="Name" ref="name" value="{ opts.data.contact.name }" />
+                    <input class="form-control input-lg" readonly placeholder="Name" ref="name" value="{ opts.data.contact.name }" />
                 </div>
             </div>
         </div>
@@ -44,7 +47,7 @@
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-tag"></span>
                     </span>
-                    <input class="form-control" placeholder="Label" ref="phoneLabel" value="{ phone.label }" />
+                    <input class="form-control" readonly placeholder="Label" ref="phoneLabel" value="{ phone.label }" />
                 </div>
             </div>
 
@@ -53,7 +56,7 @@
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
                     </span>
-                    <input class="form-control" placeholder="Phone" ref="phoneValue" value="{ phone.value }" />
+                    <input class="form-control" readonly placeholder="Phone" ref="phoneValue" value="{ phone.value }" />
                 </div>
             </div>
             <div class="col-sm-1">
@@ -72,14 +75,14 @@
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
                     </span>
-                    <input class="form-control" placeholder="Label" ref="emailLabel" value="{ email.label }" />
+                    <input class="form-control" readonly placeholder="Label" ref="emailLabel" value="{ email.label }" />
                 </div>
             </div>
 
             <div class="col-sm-7">
                 <div class="input-group">
                     <span class="input-group-addon">@</span>
-                    <input class="form-control" placeholder="E-mail" ref="emailValue" value="{ email.value }" />
+                    <input class="form-control" readonly placeholder="E-mail" ref="emailValue" value="{ email.value }" />
                 </div>
             </div>
 

@@ -8,10 +8,18 @@ module.exports = function(opts) {
 	tag.removeEmail = removeEmail
 	tag.saveContact = saveContact
 	tag.deleteContact = deleteContact
+	tag.editContact = editContact
 
 	tag.on('mount', function() {
-		
+		if ($.isEmptyObject(tag.opts.data.contact)) {
+			editContact()
+			//$('#btnNewItem').removeClass('hidden')
+		}
 	})
+
+	function editContact(e) {
+		$('input').removeAttr("readonly")
+	}
 
 	function newPhone(e) {
 		if (!tag.opts.data.contact.phones) {
@@ -41,6 +49,11 @@ module.exports = function(opts) {
 
 	function deleteContact (e) {
 
+		if (!tag.opts.data.contact.mongoId) {
+			window.location = '#contacts'
+			return
+		}
+
 		var url = window.location.origin + '/api/contacts/' + tag.opts.data.contact.mongoId
 		
 		$.ajax({
@@ -48,6 +61,7 @@ module.exports = function(opts) {
 			url: url
 		}).done(function() {
 			toastr.success('Done!')
+			window.location = '#contacts'
 		})
 	}
 

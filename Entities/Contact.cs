@@ -9,6 +9,12 @@ namespace Contacts.Entities
     {
         public ObjectId Id { get; set; }
 
+        public void GenerateNewIdForUpserting(){
+            if (Id == ObjectId.Empty) {
+                Id = ObjectId.GenerateNewId();
+            }
+        }
+
         [DataMember, BsonIgnore]
         public string MongoId
         {

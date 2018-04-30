@@ -14,7 +14,7 @@ namespace Contacts.Controllers
     [Route("api/[controller]")]
     public class ContactsController : Controller
     {
-        private string connectionString = @"";
+        private string connectionString = @"mongodb://localhost:27017";
 
         private IMongoDatabase GetDatabase()
         {
@@ -53,18 +53,15 @@ namespace Contacts.Controllers
 
         // POST api/contacts
         [HttpPost]
-        public void Post([FromBody]Contact contact)
+        public Contact Post([FromBody]Contact contact)
         {
             var db = GetDatabase();
             var collection = db.GetCollection<Contact>("contacts");
+            contact.GenerateNewIdForUpserting();
             var filter = Builders<Contact>.Filter.Eq(c => c.Id, contact.Id);
-            collection.FindOneAndReplace(filter, contact);
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
+            var options = new FindOneAndReplaceOptions<Contact, Contact> { IsUpsert = true,  };
+            var result = collection.FindOneAndReplace(filter, contact, options);
+            return result;
         }
 
         // DELETE api/contacts/5
