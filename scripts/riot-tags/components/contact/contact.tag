@@ -19,7 +19,7 @@
                     <span class="glyphicon glyphicon-pencil"></span> Edit contact
                 </button>
                 <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-danger" onclick={deleteContact} if={!$.isEmptyObject(this.opts.data.contact)}>
+                    <button type="button" class="btn btn-danger" onclick={deleteContact} if={!$.isEmptyObject(this.opts.data.contact) && this.opts.data.contact.name}>
                         <span class="glyphicon glyphicon-trash"></span> Delete contact
                     </button>
                 </div>
