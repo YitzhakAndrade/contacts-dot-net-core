@@ -18,7 +18,7 @@ module.exports = function(opts) {
 	})
 
 	function editContact(e) {
-		$('input').removeAttr("readonly")
+		//$('input').removeAttr("readonly")
 	}
 
 	function newPhone(e) {

@@ -8,19 +8,25 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Core;
+using Microsoft.Extensions.Configuration;
 
 namespace Contacts.Controllers
 {
     [Route("api/[controller]")]
     public class ContactsController : Controller
     {
-        //private string connectionString = @"mongodb://localhost:27017";
-        private string connectionString = @"mongodb://contacts-dot-net-core:rKpH7FumzqUlnrTNn0TkdM236aaMtVK8XnVefCPdXnfLSCU80HmM58CxHu0mJrxJiQEIAkicW6nhC5v9IIeFbA==@contacts-dot-net-core.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+        private readonly IConfiguration configuration;
+
+        public ContactsController(IConfiguration config)
+        {
+            configuration = config;
+        }
 
         private IMongoDatabase GetDatabase()
         {
+            var connStr = configuration.GetConnectionString("Contacts");
             MongoClientSettings settings = MongoClientSettings.FromUrl(
-                new MongoUrl(connectionString)
+                new MongoUrl(connStr)
             );
             settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
             var client = new MongoClient(settings);
