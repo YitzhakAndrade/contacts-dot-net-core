@@ -34,14 +34,13 @@ namespace Contacts
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseCors(builder => 
-                builder.WithOrigins("*")
-                    .AllowAnyHeader()
+                builder.AllowAnyHeader()
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
+                    .AllowCredentials()
             );
-
+            
             app.UseMvc();
             app.UseStaticFiles();
         }
