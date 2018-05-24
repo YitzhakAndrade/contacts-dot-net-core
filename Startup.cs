@@ -36,9 +36,10 @@ namespace Contacts
             }
 
             app.UseCors(builder => 
-                builder
-                    .WithOrigins("*")
+                builder.WithOrigins("*")
                     .AllowAnyHeader()
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
             );
 
             app.UseMvc();
