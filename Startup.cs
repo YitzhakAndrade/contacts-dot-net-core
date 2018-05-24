@@ -35,7 +35,11 @@ namespace Contacts
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(builder => builder.WithOrigins("*"));
+            app.UseCors(builder => 
+                builder
+                    .WithOrigins("*")
+                    .AllowAnyHeader()
+            );
 
             app.UseMvc();
             app.UseStaticFiles();
